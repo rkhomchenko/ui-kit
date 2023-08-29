@@ -1,0 +1,6 @@
+projects/ui-kit/dist
+projects/ui-kit/node_modules
+node_modules
+.vscode
+.github
+.husky
