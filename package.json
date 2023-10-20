@@ -14,7 +14,7 @@
     "postversion": "mw -r ../package.json . && mw -r ../npm-shrinkwrap.json .",
     "storybook:serve": "ng run ui-kit:storybook",
     "storybook:build": "ng run ui-kit:build-storybook",
-    "compodoc:serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -p tsconfig.doc.json -s -r 3202",
     "compodoc:build": "compodoc -p tsconfig.doc.json"
   },
   "lint-staged": {

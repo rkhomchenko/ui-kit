@@ -43,7 +43,7 @@
               "-e",
               "json"
             ],
-            "port": 6006
+            "port": 3201
           }
         },
         "build-storybook": {
