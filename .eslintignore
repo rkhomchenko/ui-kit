@@ -1,6 +1,14 @@
-projects/ui-kit/dist
+dist
 projects/ui-kit/node_modules
 node_modules
 .vscode
 .github
 .husky
+.eslintrc.json
+package.json
+package-lock.json
+!.storybook
+tsconfig
+
+.*.json
+**/*.json
