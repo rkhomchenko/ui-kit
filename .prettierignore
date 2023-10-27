@@ -1,4 +1,13 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+dist
+projects/ui-kit/node_modules
+node_modules
+.vscode
+.github
+.husky
+.eslintrc.json
+package.json
+package-lock.json
+!.storybook
 
 # Compiled output
 /dist
