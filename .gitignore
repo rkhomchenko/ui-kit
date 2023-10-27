@@ -2,7 +2,6 @@
 
 # Compiled output
 /dist
-/projects/ui-kit/dist
 /tmp
 /out-tsc
 /bazel-out
@@ -42,5 +41,6 @@ testem.log
 Thumbs.db
 
 .vscode
+*.zip
 documentation
 documentation.json

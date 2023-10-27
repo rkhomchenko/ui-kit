@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+@use 'dark' as q9-dark;
+@use 'light' as q9-light;
+
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons&family=Roboto:wght@300;400;500");
+
+.q9-dark {
+  @include mat.all-component-themes(q9-dark.$theme);
+}
+
+.q9-light {
+  @include mat.all-component-themes(q9-light.$theme);
+}
+
+@import "overrides";

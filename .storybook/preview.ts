@@ -1,19 +1,42 @@
-import type {Preview} from "@storybook/angular";
 import {setCompodocJson} from "@storybook/addon-docs/angular";
+import {withThemeByClassName} from "@storybook/addon-themes";
+
 import docJson from "../documentation.json";
+import "../projects/ui-kit/src/styles/index.scss";
 
 setCompodocJson(docJson);
 
-const preview: Preview = {
-  parameters: {
-    actions: {argTypesRegex: "^on[A-Z].*"},
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i
-      }
-    }
-  }
-};
+const themeClasses = ["q9-light", "q9-dark"];
 
-export default preview;
+//TODO: configure global decorators
+//decorators: [
+//     applicationConfig({
+//       providers: [
+//         provideAnimations(),
+//         {
+//           provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+//           useValue: {
+//             appearance: "outline",
+//             color: "primary",
+//             floatLabel: "auto"
+//           } as MatFormFieldDefaultOptions
+//         }
+//       ]
+//     }),
+//     moduleMetadata({
+//       imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatIconModule]
+//     })
+//   ],
+
+export const decorators = [
+  withThemeByClassName({
+    themes: themeClasses.reduce(
+      (obj, value) => ({...obj, [value]: `${value} mat-app-background mat-typography`}), {}
+    ),
+    defaultTheme: themeClasses[0]
+  })
+];
+
+export const parameters = {
+  actions: {argTypesRegex: "^on.*"}
+};

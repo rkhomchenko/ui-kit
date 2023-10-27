@@ -1,0 +1,56 @@
+@use 'utils' as utils;
+@use 'variables' as vars;
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primary: (
+  100: #394457,
+  200: #4B7ED0,
+  300: #8AB4F8,
+  400: #A0C3FB,
+  500: #BED4F9,
+  contrast: (
+    100: vars.$light-text,
+    200: vars.$light-text,
+    300: vars.$dark-text,
+    400: vars.$dark-text,
+    500: vars.$dark-text,
+  )
+);
+
+$accent: (
+  100: #37383B,
+  200: #5F6368,
+  300: #74797E,
+  400: #8E9095,
+  500: #B4B8BB,
+  contrast: (
+    100: vars.$light-text,
+    200: vars.$light-text,
+    300: vars.$light-text,
+    400: vars.$dark-text,
+    500: vars.$dark-text,
+  )
+);
+
+$warn: (
+  100: #A33725,
+  200: #B65949,
+  300: #E87C69,
+  400: #F59C8C,
+  500: #F4B4A8,
+  contrast: (
+    100: vars.$light-text,
+    200: vars.$light-text,
+    300: vars.$dark-text,
+    400: vars.$dark-text,
+    500: vars.$dark-text,
+  )
+);
+
+$theme: utils.define-theme($primary, $accent, $warn, true);
+
+//TODO: pay attention to button borders color, bg color on hover/focus
+//@debug $theme;
+

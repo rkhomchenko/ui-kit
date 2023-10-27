@@ -1,0 +1,52 @@
+@use 'utils' as utils;
+@use 'variables' as vars;
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primary: (
+  100: #E8F1FA,
+  200: #D1E4F5,
+  300: #1977CD,
+  400: #0B5CAB,
+  500: #104D88,
+  contrast: (
+    100: vars.$dark-text,
+    200: vars.$dark-text,
+    300: vars.$light-text,
+    400: vars.$light-text,
+    500: vars.$light-text,
+  )
+);
+
+$accent: (
+  100: #F2F3F3,
+  200: #DDDEE0,
+  300: #B1B7BF,
+  400: #8E9095,
+  500: #373D45,
+  contrast: (
+    100: vars.$dark-text,
+    200: vars.$dark-text,
+    300: vars.$dark-text,
+    400: vars.$light-text,
+    500: vars.$light-text,
+  )
+);
+
+$warn: (
+  100: #FBEBEA,
+  200: #F8D8D6,
+  300: #CA4A41,
+  400: #AD342B,
+  500: #8E271F,
+  contrast: (
+    100: vars.$dark-text,
+    200: vars.$dark-text,
+    300: vars.$light-text,
+    400: vars.$light-text,
+    500: vars.$light-text,
+  )
+);
+
+$theme: utils.define-theme($primary, $accent, $warn);

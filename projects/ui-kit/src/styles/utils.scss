@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use 'variables' as vars;
+@use '@angular/material' as mat;
+
+@function modify-background($theme, $background-color) {
+  // Replace the background in the color object's background palette.
+  $theme-color: map.get($theme, color);
+  $color-background-palette: map.get($theme-color, background);
+  $color-background-palette: map.merge($color-background-palette, (background: $background-color));
+  $color-background-palette: map.merge($color-background-palette, (raised-button: $background-color));
+
+  // Replace the background in the background palette.
+  $background-palette: map.get($theme, background);
+  $background-palette: map.merge($background-palette, (background: $background-color));
+  $background-palette: map.merge($background-palette, (raised-button: $background-color));
+
+  // Merge the changes into a new theme.
+  $modified-theme-color: map.merge($theme-color, (background: $color-background-palette));
+  $modified-theme: map.merge($theme, (color: $modified-theme-color));
+  $modified-theme: map.merge($modified-theme, (background: $background-palette));
+
+  @return $modified-theme;
+}
+
+@function define-theme($primary-palette, $accent-palette, $warn-palette, $dark: false) {
+  $theme: null;
+  $primary: mat.define-palette($primary-palette, 300, 100, 500);
+  $accent: mat.define-palette($accent-palette, 300, 100, 500);
+  $warn: mat.define-palette($warn-palette, 300, 100, 500);
+
+  @if $dark {
+    $theme: mat.define-dark-theme((
+      color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    ));
+
+    $theme: modify-background($theme, vars.$dark-bg);
+  } @else {
+    $theme: mat.define-light-theme((
+      color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    ));
+
+    $theme: modify-background($theme, vars.$light-bg);
+  }
+
+  @return $theme;
+}

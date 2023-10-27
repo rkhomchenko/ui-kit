@@ -5,7 +5,8 @@
       "node"
     ],
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "jsx": "react"
   },
   "exclude": [
     "../src/test.ts",
