@@ -1,4 +1,4 @@
-import {ErrorStateMatcher} from "@angular/material/core";
+import {ErrorStateMatcher} from '@angular/material/core';
 
 export class ErrorStateMatcherStub implements ErrorStateMatcher {
 	isErrorState(): boolean {
@@ -9,4 +9,3 @@ export class ErrorStateMatcherStub implements ErrorStateMatcher {
 export function validationStub() {
 	return {error: true};
 }
-

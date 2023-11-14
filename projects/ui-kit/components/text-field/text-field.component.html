@@ -1,0 +1,18 @@
+<mat-form-field [color]="color" [hintLabel]="hint" class="q9-text-field">
+	<mat-label *ngIf="label">{{ label }}</mat-label>
+
+	<input
+		matInput
+		type="text"
+		[ngModel]="_value"
+		[disabled]="_isDisabled"
+		[errorStateMatcher]="this"
+		(ngModelChange)="_onChange($event)" />
+
+	<!--	<mat-spinner matSuffix *ngIf="isLoading"></mat-spinner>-->
+	<mat-icon matSuffix *ngIf="icon">{{ icon }}</mat-icon>
+
+	<mat-error *ngIf="_control?.errors | transform: getError as error">
+		{{ error.message }}
+	</mat-error>
+</mat-form-field>

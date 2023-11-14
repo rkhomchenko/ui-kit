@@ -1,55 +1,46 @@
-import {applicationConfig, Meta, moduleMetadata, StoryFn} from "@storybook/angular";
-import {CommonModule} from "@angular/common";
-import {MatSelect, MatSelectModule} from "@angular/material/select";
-import {
-	MAT_FORM_FIELD_DEFAULT_OPTIONS,
-	MatFormFieldDefaultOptions,
-	MatFormFieldModule
-} from "@angular/material/form-field";
-import {constant, times} from "lodash";
-import {provideAnimations} from "@angular/platform-browser/animations";
-
-const options = times(20, constant("Item"));
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {SelectComponent, SelectModule} from '@q9elements/ui-kit/components';
+import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 
 export default {
-	title: "Components/Angular Material/Select",
-	component: MatSelect,
-	tags: ["autodocs"],
+	title: 'Components/Angular Material/Select',
+	tags: ['autodocs'],
+	component: SelectComponent,
 	decorators: [
-		applicationConfig({
-			providers: [
-				provideAnimations(),
-				{
-					provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-					useValue: {
-						appearance: "outline",
-						color: "primary",
-						floatLabel: "auto"
-					} as MatFormFieldDefaultOptions
-				}
-			]
-		}),
 		moduleMetadata({
-			imports: [CommonModule, MatSelectModule, MatFormFieldModule]
+			imports: [CommonModule, FormsModule, SelectModule, MatIconModule]
 		})
-	],
-	args: {
-		label: "Label",
-		options
-	},
-	argTypes: {}
+	]
 } as Meta;
 
-export const Basic: StoryFn<MatSelect> = (args) => ({
+export const Default: StoryFn = args => ({
+	props: args,
 	template: `
-    <mat-form-field>
-      <mat-label>{{label}}</mat-label>
-      <mat-select>
-          <mat-option *ngFor="let item of options; index as i" [value]="i">
-              {{item}} {{i}}
-          </mat-option>
-      </mat-select>
-    </mat-form-field>
-  `,
-	props: args
+	<q9-select
+		[ngModel]="2"
+		(ngModelChange)="onChange($event)"
+	  [label]="label"
+		[hint]="hint"
+		[multiple]="multiple"
+		[color]="color" 
+	>
+		<q9-option *ngFor="let value of values" [value]="value">
+			Option {{ value }}
+		</q9-option>
+	</q9-select>
+	`
 });
+
+Default.args = {
+	label: 'Label',
+	hint: 'Hint',
+	multiple: false,
+	color: 'primary',
+	values: [1, 2, 3]
+};
+
+Default.argTypes = {
+	onChange: {action: 'changed'}
+};

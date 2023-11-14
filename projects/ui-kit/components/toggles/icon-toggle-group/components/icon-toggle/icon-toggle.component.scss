@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+
+:host-context:not(.q9-icon-toggle-checked) {
+	button {
+		--mdc-fab-container-color: none;
+		--mat-mdc-fab-color: var(--q9-accent-500);
+	}
+}
+
+button {
+	--mdc-fab-container-shape: 6px;
+
+	width: 32px;
+	height: 32px;
+	box-shadow: none !important;
+}

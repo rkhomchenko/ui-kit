@@ -1,0 +1,14 @@
+<button
+	mat-mini-fab
+	type="button"
+	[id]="buttonId"
+	[attr.tabindex]="disabled ? -1 : tabIndex"
+	[attr.aria-pressed]="checked"
+	[attr.name]="_getButtonName()"
+	[attr.aria-label]="ariaLabel"
+	[attr.aria-labelledby]="ariaLabelledby"
+	color="primary"
+	[disabled]="disabled"
+	(click)="_onButtonClick()">
+	<mat-icon>{{ icon }}</mat-icon>
+</button>

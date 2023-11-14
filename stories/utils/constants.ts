@@ -1,22 +1,23 @@
-import {THEME_PALETTE} from "./enums";
+import {Args} from '@storybook/angular';
+import {ArgTypes} from '@storybook/types';
 
-export const BaseControlArgs = {
-	label: "Label",
+import {COLOR_CONTROL} from './controls';
+import {THEME_PALETTE} from './enums';
+
+export const BaseControlArgs: Args = {
+	label: 'Label',
 	color: THEME_PALETTE.PRIMARY,
-	disabled: false,
-	disableRipple: false
+	disabled: false
 };
 
-export const BaseControlArgTypes = {
+export const BaseControlArgTypes: ArgTypes = {
+	color: COLOR_CONTROL,
 	label: {
-		description: "Component label",
-		control: "text"
+		description: 'Component label',
+		control: 'text'
 	},
-	color: {
-		description: "Theme color palette for the component.",
-		options: Object.values(THEME_PALETTE),
-		control: "select"
-	},
-	disabled: {control: "boolean"},
-	disableRipple: {control: "boolean"}
+	disabled: {
+		control: 'boolean',
+		description: 'Whether the component is disabled.'
+	}
 };

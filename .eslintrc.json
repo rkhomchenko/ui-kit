@@ -22,13 +22,13 @@
 				"@angular-eslint/directive-selector": [
 					"error",
 					{
-						"type": "attribute",
+						"type": "any",
 						"prefix": "q9",
-						"style": "camelCase"
+						"style": "kebab-case"
 					}
 				],
 				"@angular-eslint/component-selector": [
-					"error",
+					"off",
 					{
 						"type": "element",
 						"prefix": "q9",
@@ -60,7 +60,10 @@
 						]
 					}
 				],
-				"unused-imports/no-unused-imports": "error"
+				"unused-imports/no-unused-imports": "error",
+				"@typescript-eslint/no-explicit-any": "off",
+				"@typescript-eslint/ban-ts-comment": "off",
+				"@angular-eslint/no-host-metadata-property": "off"
 			}
 		},
 		{

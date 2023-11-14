@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+@use '../utils' as utils;
+
+@include utils.extendTheme() {
+	//--mat-select-trigger-text-line-height: 22px;
+	//
+	//.mat-mdc-select-arrow-wrapper {
+	//  height: 22px;
+	//}
+}

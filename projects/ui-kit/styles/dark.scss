@@ -1,0 +1,64 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use 'utils' as utils;
+
+@include mat.core();
+
+$extra: (
+	100: #222326,
+	200: #252626,
+	contrast: (
+		light: #ffffff,
+		dark: #373d45
+	)
+);
+
+$dark-text: map.get($extra, contrast, dark);
+$light-text: map.get($extra, contrast, light);
+
+$primary: (
+	100: #394457,
+	200: #4b7ed0,
+	300: #8ab4f8,
+	400: #a0c3fb,
+	500: #bed4f9,
+	contrast: (
+		100: $light-text,
+		200: $light-text,
+		300: $dark-text,
+		400: $dark-text,
+		500: $dark-text
+	)
+);
+
+$accent: (
+	100: #37383b,
+	200: #5f6368,
+	300: #74797e,
+	400: #8e9095,
+	500: #b4b8bb,
+	contrast: (
+		100: $light-text,
+		200: $light-text,
+		300: $light-text,
+		400: $dark-text,
+		500: $dark-text
+	)
+);
+
+$warn: (
+	100: #a33725,
+	200: #b65949,
+	300: #e87c69,
+	400: #f59c8c,
+	500: #f4b4a8,
+	contrast: (
+		100: $light-text,
+		200: $light-text,
+		300: $dark-text,
+		400: $dark-text,
+		500: $dark-text
+	)
+);
+
+$theme: utils.define-theme($primary, $accent, $warn, $extra, true);

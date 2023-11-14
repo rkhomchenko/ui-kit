@@ -1,0 +1,14 @@
+@use '../../projects/ui-kit/styles/utils' as utils;
+
+#storybook-docs .sbdocs-preview {
+	background-color: var(--q9-surface-100);
+}
+
+.sb-sidenav-container {
+	height: 96vh;
+	border: 1px solid lightgray;
+
+	.sb-sidenav-content {
+		margin: 16px;
+	}
+}

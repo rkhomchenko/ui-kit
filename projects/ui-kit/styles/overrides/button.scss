@@ -1,0 +1,31 @@
+@use '../utils' as utils;
+@use '@angular/material' as mat;
+
+@include utils.extendTheme() {
+	button {
+		--mdc-typography-button-letter-spacing: normal;
+
+		mat-spinner svg {
+			--mdc-circular-progress-active-indicator-color: #{currentColor};
+		}
+
+		&.mdc-button:not([mat-icon-button], [mat-fab], [mat-mini-fab]) {
+			height: 40px;
+		}
+
+		&[mat-icon-button].mat-mdc-icon-button {
+			--mdc-icon-button-state-layer-size: 40px;
+			padding: 8px;
+
+			.mat-mdc-button-touch-target {
+				height: var(--mdc-icon-button-state-layer-size);
+				width: var(--mdc-icon-button-state-layer-size);
+			}
+		}
+	}
+
+	.mat-mdc-outlined-button {
+		--mdc-outlined-button-outline-width: 1px;
+		--mdc-outlined-button-outline-color: #{currentColor};
+	}
+}

@@ -1,0 +1,9 @@
+<button mat-button [color]="color" [disabled]="disabled">
+	<ng-container *ngIf="!isLoading; else loader">
+		<ng-content></ng-content>
+	</ng-container>
+
+	<ng-template #loader>
+		<mat-spinner matSuffix *ngIf="isLoading"></mat-spinner>
+	</ng-template>
+</button>

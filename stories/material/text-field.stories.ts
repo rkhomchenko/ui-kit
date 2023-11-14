@@ -1,131 +1,155 @@
-import {Meta, StoryFn} from "@storybook/angular";
-import {ErrorStateMatcherStub, validationStub} from "../utils";
-import {FormControl} from "@angular/forms";
-import {MatFormField} from "@angular/material/form-field";
+import {CommonModule} from '@angular/common';
+import {
+	FormControl,
+	FormsModule,
+	ReactiveFormsModule,
+	ValidatorFn
+} from '@angular/forms';
+import {TextFieldComponent} from '@q9elements/ui-kit/components';
+import {Q9Validators} from '@q9elements/ui-kit/validators';
+import {
+	argsToTemplate,
+	Meta,
+	moduleMetadata,
+	StoryFn,
+	StoryObj
+} from '@storybook/angular';
+
+import {BaseControlArgs, BaseControlArgTypes} from '../utils';
 
 export default {
-	title: "Components/Angular Material/Text Field",
-	component: MatFormField,
-	tags: ["autodocs"]
-	// decorators: [
-	// 	applicationConfig({
-	// 		providers: [
-	// 			provideAnimations(),
-	// 			{
-	// 				provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-	// 				useValue: {
-	// 					appearance: 'outline',
-	// 					color: 'primary',
-	// 					floatLabel: 'auto'
-	// 				} as MatFormFieldDefaultOptions
-	// 			}
-	// 		]
-	// 	}),
-	// 	moduleMetadata({
-	// 		imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatIconModule]
-	// 	})
-	// ],
-	// args: {
-	// 	label: 'Label',
-	// 	icon: 'visibility',
-	// 	disabled: false
-	// }
+	title: 'Components/Angular Material/Text Field',
+	component: TextFieldComponent,
+	render: ({value, onChange, ...args}) => ({
+		props: {value, onChange, ...args},
+		template: `
+				<q9-text-field ${argsToTemplate(args)}
+											 [ngModel]="value"
+											 (ngModelChange)="onChange($event)"></q9-text-field>
+		`
+	}),
+	tags: ['autodocs'],
+	parameters: {
+		controls: {
+			exclude: [
+				'_value',
+				'_control',
+				'getError',
+				'_onChange',
+				'writeValue',
+				'_isDisabled',
+				'isErrorState',
+				'setDisabledState',
+				'registerOnChange',
+				'registerOnTouched'
+			]
+		}
+	},
+	args: {
+		...BaseControlArgs,
+		value: 'Input value'
+	},
+	argTypes: {
+		...BaseControlArgTypes,
+		hint: {
+			control: 'text',
+			description: 'Hint text to be shown underneath the text field.'
+		},
+		icon: {
+			control: 'text',
+			description: 'Icon to be shown on the left side of the text field.'
+		},
+		onChange: {
+			description: 'Emitted when the value has changed.',
+			action: 'changed'
+		},
+		value: {
+			control: 'text',
+			description: 'Initial text field value.'
+		}
+	},
+	decorators: [
+		moduleMetadata({
+			imports: [
+				CommonModule,
+				FormsModule,
+				TextFieldComponent,
+				ReactiveFormsModule
+			]
+		})
+	]
 } as Meta;
 
-export const Default: StoryFn<MatFormField> = (args) => ({
-	props: args
-});
+export const Default: StoryObj<TextFieldComponent> = {};
 
-Default.args = {
-	label: "My awesome label",
-	error: "The field is required!",
-	color: "accent"
+export const InputWithIcon: StoryObj<TextFieldComponent> = {
+	name: 'With icon',
+	args: {
+		icon: 'favorite'
+	}
 };
 
+export const InputWithHint: StoryObj<TextFieldComponent> = {
+	name: 'With hint',
+	args: {
+		hint: 'Hint'
+	}
+};
 
-// export const BasicInput: StoryFn<MatFormField> = (args) => {
-// 	return {
-// 		template: `
-//     <mat-form-field color="accent">
-//       <mat-label>{{label}}</mat-label>
-//       <input [disabled]="disabled" matInput type="text">
-//     </mat-form-field>
-//   `,
-// 		props: args
-// 	};
-// };
-//
-// BasicInput.storyName = 'Basic input';
-//
-export const InvalidInput: StoryFn = ({value, disabled, ...args}: any) => {
-	const control = new FormControl({value, disabled}, validationStub);
-	const matcher = new ErrorStateMatcherStub();
+export const InputWithIconAndHint: StoryObj<TextFieldComponent> = {
+	name: 'With icon and hint',
+	args: {
+		icon: 'favorite',
+		hint: 'Hint'
+	}
+};
 
-	// control.setErrors({error: true});
+export const InputFormControl: StoryFn<any> = args => {
+	const {value, disabled, required, minLength, maxLength, onChange, ...props} =
+		args;
+	const validators: ValidatorFn[] = [];
+
+	if (required) {
+		validators.push(Q9Validators.required());
+	}
+
+	if (minLength) {
+		validators.push(Q9Validators.minLength(minLength));
+	}
+
+	if (maxLength) {
+		validators.push(Q9Validators.maxLength(maxLength));
+	}
+
+	const formControl = new FormControl(
+		{value, disabled},
+		Q9Validators.compose(validators)
+	);
+
+	formControl.valueChanges.subscribe(onChange);
 
 	return {
-		template: `
-    <mat-form-field>
-      <mat-label>{{label}}</mat-label>
-      <input type="text"
-             matInput
-             [formControl]="control"
-             [errorStateMatcher]="matcher">
-      <mat-error *ngIf="control.invalid">{{error}}</mat-error>
-    </mat-form-field>
-  `,
 		props: {
-			matcher, control, ...args
-		}
+			...props,
+			formControl
+		},
+		template: `
+		<q9-text-field [formControl]="formControl"
+									${argsToTemplate(props)}>
+		</q9-text-field>
+		`
 	};
 };
-//
-// InvalidInput.args = {
-// 	value: 'Input text',
-// 	error: 'Error message'
-// };
-//
-// export const InputWithHint: StoryFn<MatFormField> = (args) => ({
-// 	template: `
-//     <mat-form-field>
-//       <mat-label>{{label}}</mat-label>
-//       <input matInput type="text">
-//       <mat-hint>{{hint}}</mat-hint>
-//     </mat-form-field>
-//   `,
-// 	props: args
-// });
-//
-// const InputWithHintOptions: StoryAnnotations = {
-// 	storyName: 'Input with hint',
-// 	args: {
-// 		hint: 'Hint text'
-// 	}
-// };
-// Object.assign(InputWithHint, InputWithHintOptions);
-//
-// export const InputWithIcon: StoryFn<MatFormField> = (args) => ({
-// 	template: `
-//     <mat-form-field>
-//       <mat-label>{{label}}</mat-label>
-//       <input matInput type="text">
-//       <mat-icon matSuffix>{{icon}}</mat-icon>
-//     </mat-form-field>
-//   `,
-// 	props: args
-// });
-//
-// InputWithIcon.storyName = 'Input with icon';
-// export const InputWithHintAndIcon: StoryFn<MatFormField> = (args) => ({
-// 	template: `
-//      <mat-form-field>
-//       <mat-label>{{label}}</mat-label>
-//       <input matInput type="text">
-//       <mat-icon matSuffix>{{icon}}</mat-icon>
-//       <mat-hint>{{hint}}</mat-hint>
-//     </mat-form-field>
-//   `,
-// 	props: args
-// });
-//
-// InputWithHintAndIcon.storyName = 'Input with hint and icon';
+
+InputFormControl.storyName = 'Form control';
+InputFormControl.args = {
+	required: false,
+	minLength: 2,
+	maxLength: 10
+};
+
+InputFormControl.argTypes = {
+	required: {control: 'boolean'},
+	minLength: {control: 'number'},
+	maxLength: {control: 'number'}
+};

@@ -1,42 +1,41 @@
-import {setCompodocJson} from "@storybook/addon-docs/angular";
-import {withThemeByClassName} from "@storybook/addon-themes";
+import {importProvidersFrom} from '@angular/core';
+import {CoreModule} from '@q9elements/ui-kit/common';
+import {setCompodocJson} from '@storybook/addon-docs/angular';
+import {withThemeByClassName} from '@storybook/addon-themes';
+import {applicationConfig, moduleMetadata, Preview} from '@storybook/angular';
 
-import docJson from "../documentation.json";
-import "../projects/ui-kit/src/styles/index.scss";
+import docJson from '../documentation.json';
+
+import '../stories/styles/global.scss?ngStorybook';
+import '../projects/ui-kit/styles/index.scss?ngStorybook';
 
 setCompodocJson(docJson);
 
-const themeClasses = ["q9-light", "q9-dark"];
+const themeClasses = ['q9-system', 'q9-light', 'q9-dark'];
 
-//TODO: configure global decorators
-//decorators: [
-//     applicationConfig({
-//       providers: [
-//         provideAnimations(),
-//         {
-//           provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-//           useValue: {
-//             appearance: "outline",
-//             color: "primary",
-//             floatLabel: "auto"
-//           } as MatFormFieldDefaultOptions
-//         }
-//       ]
-//     }),
-//     moduleMetadata({
-//       imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatIconModule]
-//     })
-//   ],
-
-export const decorators = [
-  withThemeByClassName({
-    themes: themeClasses.reduce(
-      (obj, value) => ({...obj, [value]: `${value} mat-app-background mat-typography`}), {}
-    ),
-    defaultTheme: themeClasses[0]
-  })
-];
-
-export const parameters = {
-  actions: {argTypesRegex: "^on.*"}
-};
+export default {
+	parameters: {
+		actions: {argTypesRegex: '^on.*'},
+		backgrounds: {
+			disable: true
+		}
+	},
+	decorators: [
+		withThemeByClassName({
+			themes: themeClasses.reduce(
+				(obj, value) => ({
+					...obj,
+					[value]: `${value} mat-app-background mat-typography`
+				}),
+				{}
+			),
+			defaultTheme: themeClasses[0]
+		}),
+		applicationConfig({
+			providers: [importProvidersFrom(CoreModule)]
+		}),
+		moduleMetadata({
+			imports: [CoreModule]
+		})
+	]
+} as Preview;

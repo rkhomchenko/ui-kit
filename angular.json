@@ -6,7 +6,7 @@
 		"ui-kit": {
 			"projectType": "library",
 			"root": "projects/ui-kit",
-			"sourceRoot": "projects/ui-kit/src",
+			"sourceRoot": "projects/ui-kit",
 			"prefix": "q9",
 			"architect": {
 				"build": {
@@ -38,7 +38,7 @@
 					"options": {
 						"configDir": ".storybook",
 						"browserTarget": "ui-kit:build",
-						"styles": ["projects/ui-kit/src/styles/index.scss"],
+						"styles": ["projects/ui-kit/styles/index.scss"],
 						"compodoc": true,
 						"compodocArgs": ["-e", "json"],
 						"port": 3201
@@ -49,32 +49,37 @@
 					"options": {
 						"configDir": ".storybook",
 						"browserTarget": "ui-kit:build",
-						"styles": ["projects/ui-kit/src/styles/index.scss"],
+						"styles": ["projects/ui-kit/styles/index.scss"],
 						"compodoc": true,
 						"compodocArgs": ["-e", "json"],
 						"outputDir": "dist/storybook"
 					}
 				}
-			},
-			"schematics": {
-				"@schematics/angular:component": {
-					"standalone": true
-				},
-				"@schematics/angular:directive": {
-					"standalone": true
-				},
-				"@schematics/angular:pipe": {
-					"standalone": true
-				}
 			}
 		}
 	},
 	"cli": {
-		"schematicCollections": ["@angular-eslint/schematics"]
+		"schematicCollections": ["@angular-eslint/schematics"],
+		"cache": {
+			"enabled": false
+		}
 	},
 	"schematics": {
 		"@schematics/angular:component": {
-			"style": "scss"
+			"style": "scss",
+			"skipTests": true,
+			"standalone": true
+		},
+		"@schematics/angular:directive": {
+			"skipTests": true,
+			"standalone": true
+		},
+		"@schematics/angular:pipe": {
+			"skipTests": true,
+			"standalone": true
+		},
+		"@schematics/angular:service": {
+			"skipTests": true
 		}
 	}
 }

@@ -1,0 +1,62 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '../utils' as utils;
+@use '../dark' as q9-dark;
+@use '../light' as q9-light;
+
+@include utils.extendTheme('light') {
+	--mdc-outlined-text-field-outline-color: #{map.get(q9-light.$accent, 300)};
+	--mdc-outlined-text-field-hover-outline-color: #{map.get(
+			q9-light.$accent,
+			400
+		)};
+}
+
+@include utils.extendTheme('dark') {
+	--mdc-outlined-text-field-outline-color: #{map.get(q9-dark.$accent, 300)};
+	--mdc-outlined-text-field-hover-outline-color: #{map.get(q9-dark.$accent, 400)};
+}
+
+@include utils.extendTheme() {
+	--mdc-filled-text-field-label-text-size: 14px;
+	--mdc-outlined-text-field-label-text-size: 14px;
+	--mat-form-field-container-text-size: 14px;
+
+	.mdc-text-field--outlined {
+		--mdc-outlined-text-field-container-shape: 6px;
+
+		padding-left: 12px;
+		padding-right: 12px;
+
+		.mdc-floating-label:not(.mdc-floating-label--float-above) {
+			left: 0;
+		}
+	}
+
+	.mat-mdc-form-field-icon-prefix,
+	.mat-mdc-form-field-icon-suffix {
+		& > .mat-icon {
+			--mat-icon-color: var(--mdc-outlined-text-field-outline-color);
+			padding: 8px;
+		}
+	}
+
+	.mat-mdc-form-field-icon-suffix {
+		padding-right: 4px;
+	}
+
+	.mat-mdc-form-field-icon-prefix {
+		padding-left: 4px;
+	}
+
+	.mat-mdc-form-field-hint-wrapper,
+	.mat-mdc-form-field-error-wrapper {
+		padding: 0 12px;
+	}
+
+	.mat-mdc-form-field-hint-wrapper {
+		color: var(--mdc-outlined-text-field-label-text-color);
+	}
+
+	@include mat.form-field-density(-4);
+}

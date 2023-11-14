@@ -1,0 +1,146 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@function modify-background($theme, $background-color) {
+	// Replace the background in the color object's background palette.
+	$theme-color: map.get($theme, color);
+	$color-background-palette: map.get($theme-color, background);
+	$color-background-palette: map.merge(
+		$color-background-palette,
+		(
+			background: $background-color
+		)
+	);
+	$color-background-palette: map.merge(
+		$color-background-palette,
+		(
+			raised-button: $background-color
+		)
+	);
+
+	// Replace the background in the background palette.
+	$background-palette: map.get($theme, background);
+	$background-palette: map.merge(
+		$background-palette,
+		(
+			background: $background-color
+		)
+	);
+	$background-palette: map.merge(
+		$background-palette,
+		(
+			raised-button: $background-color
+		)
+	);
+
+	// Merge the changes into a new theme.
+	$modified-theme-color: map.merge(
+		$theme-color,
+		(
+			background: $color-background-palette
+		)
+	);
+	$modified-theme: map.merge(
+		$theme,
+		(
+			color: $modified-theme-color
+		)
+	);
+	$modified-theme: map.merge(
+		$modified-theme,
+		(
+			background: $background-palette
+		)
+	);
+
+	@return $modified-theme;
+}
+
+@function define-theme(
+	$primary-palette,
+	$accent-palette,
+	$warn-palette,
+	$extra,
+	$dark: false
+) {
+	$theme: null;
+	$primary: mat.define-palette($primary-palette, 300, 100, 500);
+	$accent: mat.define-palette($accent-palette, 300, 100, 500);
+	$warn: mat.define-palette($warn-palette, 300, 100, 500);
+
+	$typography: mat.define-typography-config();
+	$density: 0;
+
+	@if $dark {
+		$theme: mat.define-dark-theme(
+			(
+				color: (
+					primary: $primary,
+					accent: $accent,
+					warn: $warn
+				),
+				typography: $typography,
+				density: $density
+			)
+		);
+	} @else {
+		$theme: mat.define-light-theme(
+			(
+				color: (
+					primary: $primary,
+					accent: $accent,
+					warn: $warn
+				),
+				typography: $typography,
+				density: $density
+			)
+		);
+	}
+
+	$bg-color: map.get($extra, 200);
+
+	$theme: modify-background($theme, $bg-color);
+
+	@return $theme;
+}
+
+@mixin extendTheme($theme: null) {
+	@if $theme {
+		.q9-#{$theme} {
+			@content;
+		}
+
+		.q9-system {
+			@media (prefers-color-scheme: #{$theme}) {
+				@content;
+			}
+		}
+	} @else {
+		.q9-dark,
+		.q9-light,
+		.q9-system {
+			@content;
+		}
+	}
+}
+
+@mixin generateTokens($theme) {
+	$palettes: 'primary', 'accent', 'warn', 'surface';
+
+	@each $name in $palettes {
+		$palette: map.get($theme, $name);
+
+		$contrast: map.get($palette, 'contrast');
+		$colors: map.remove($palette, 'contrast');
+
+		@each $key, $value in $colors {
+			--q9-#{$name}-#{$key}: #{$value};
+		}
+
+		@if $contrast {
+			@each $key, $value in $contrast {
+				--q9-#{$name}-#{$key}-contrast: #{$value};
+			}
+		}
+	}
+}

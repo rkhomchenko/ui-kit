@@ -1,17 +1,22 @@
-import {Meta, moduleMetadata, StoryFn} from "@storybook/angular";
-import {MatButton, MatButtonModule} from "@angular/material/button";
-import {MatDividerModule} from "@angular/material/divider";
-import {MatIconModule} from "@angular/material/icon";
-import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatButton, MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 
 export default {
 	component: MatButton,
 	decorators: [
 		moduleMetadata({
-			imports: [MatButtonModule, MatDividerModule, MatIconModule, MatTooltipModule]
+			imports: [
+				MatButtonModule,
+				MatDividerModule,
+				MatIconModule,
+				MatTooltipModule
+			]
 		})
 	],
-	title: "Components/Angular Material/Button/Overview"
+	title: 'Components/Angular Material/Button/Examples'
 } as Meta;
 
 export const BasicButtons: StoryFn = () => ({
@@ -143,7 +148,8 @@ export const BasicButtons: StoryFn = () => ({
       </div>
     </section>
   `,
-	styles: [`
+	styles: [
+		`
     section {
       display: table;
     }
@@ -175,7 +181,8 @@ export const BasicButtons: StoryFn = () => ({
       justify-content: center;
       width: 120px;
     }
-  `]
+  `
+	]
 });
 
 export const ButtonVarieties: StoryFn = () => ({
@@ -309,7 +316,8 @@ export const ButtonVarieties: StoryFn = () => ({
         Link
       </a>
     </div>`,
-	styles: [`
+	styles: [
+		`
     .example-button-row button,
     .example-button-row a {
       margin-right: 8px;
@@ -318,5 +326,6 @@ export const ButtonVarieties: StoryFn = () => ({
     .example-disabled {
       display: inline-block;
     }
-  `]
+  `
+	]
 });

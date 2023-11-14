@@ -1,142 +1,78 @@
-import {Meta, moduleMetadata, StoryFn} from "@storybook/angular";
-import {CommonModule} from "@angular/common";
-import {MatButton, MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
+import {
+	IconButtonComponent,
+	LinkButtonComponent,
+	PrimaryButtonComponent,
+	SecondaryButtonComponent
+} from '@q9elements/ui-kit/components';
+import {BaseButtonComponent} from '@q9elements/ui-kit/components/buttons/base-button.component';
+import {
+	argsToTemplate,
+	Meta,
+	moduleMetadata,
+	StoryObj
+} from '@storybook/angular';
+
+import {BaseControlArgs, BaseControlArgTypes} from '../utils';
 
 export default {
-	title: "Components/Angular Material/Button",
-	component: MatButton,
-	tags: ["autodocs"],
+	title: 'Components/Angular Material/Button',
+	tags: ['autodocs'],
+	component: BaseButtonComponent,
 	decorators: [
 		moduleMetadata({
-			imports: [CommonModule, MatButtonModule, MatIconModule]
+			imports: [
+				PrimaryButtonComponent,
+				SecondaryButtonComponent,
+				LinkButtonComponent,
+				IconButtonComponent
+			]
 		})
 	],
+	parameters: {
+		controls: {
+			// type: {
+			// 	table: {
+			// 		disabled: true
+			// 	}
+			// }
+		}
+	},
+	render: args => {
+		const {type, label, ...props} = args;
+
+		return {
+			props: {...props, label},
+			template: `<q9-${type}-btn ${argsToTemplate(
+				props
+			)}>{{label}}</q9-${type}-btn>`
+		};
+	},
 	args: {
-		icon: "home",
-		label: "Button",
-		color: "primary",
-		disabled: false,
-		disableRipple: false
+		...BaseControlArgs,
+		isLoading: false
 	},
 	argTypes: {
-		icon: {
-			description: "Button icon",
-			control: "text"
+		type: {
+			table: {
+				disable: true
+			}
 		},
-		label: {
-			description: "Button label",
-			control: "text"
-		},
-		color: {
-			description: "Theme color palette for the button.",
-			options: [null, "primary", "accent", "warn"],
-			control: "select"
-		},
-		disabled: {
-			description: "Whether the button is disabled.",
-			control: "boolean"
-		},
-		disableRipple: {
-			description: "Whether ripples are disabled.",
-			control: "boolean"
-		},
-		onClick: {action: "clicked"}
+		...BaseControlArgTypes
 	}
 } as Meta;
 
-export const Flat: StoryFn<MatButton> = (args) => ({
-	template: `
-  <button mat-flat-button
-          [color]="color"
-          [disabled]="disabled"
-          (click)="onClick($event)"
-          [disableRipple]="disableRipple">{{label}}</button>
-  `,
-	props: args
-});
+export const Primary: StoryObj<SecondaryButtonComponent & any> = {
+	args: {type: 'primary'}
+};
 
-export const Stroked: StoryFn<MatButton> = (args) => ({
-	template: `
-  <button mat-stroked-button
-          [color]="color"
-          [disabled]="disabled"
-          (click)="onClick($event)"
-          [disableRipple]="disableRipple">{{label}}</button>
-  `,
-	props: args
-});
+export const Secondary: StoryObj<SecondaryButtonComponent & any> = {
+	args: {type: 'secondary'}
+};
 
-export const Basic: StoryFn<MatButton> = (args) => ({
-	template: `
-  <button mat-button
-          [color]="color"
-          [disabled]="disabled"
-          (click)="onClick($event)"
-          [disableRipple]="disableRipple">{{label}}</button>
-  `,
-	props: args
-});
+export const Link: StoryObj<LinkButtonComponent & any> = {
+	args: {type: 'link'}
+};
 
-export const Raised: StoryFn<MatButton> = (args) => ({
-	template: `
-  <button mat-raised-button
-          [color]="color"
-          [disabled]="disabled"
-          (click)="onClick($event)"
-          [disableRipple]="disableRipple">{{label}}</button>
-  `,
-	props: args
-});
-
-
-export const Icon: StoryFn<MatButton> = (args) => ({
-	template: `
-  <button mat-icon-button
-          [color]="color"
-          [disabled]="disabled"
-          (click)="onClick($event)"
-          [disableRipple]="disableRipple">
-          <mat-icon>{{ icon }}</mat-icon>
-  </button>
-  `,
-	props: args
-});
-export const FAB: StoryFn<MatButton> = (args) => ({
-	template: `
-  <button mat-fab
-          [color]="color"
-          [disabled]="disabled"
-          (click)="onClick($event)"
-          [disableRipple]="disableRipple">
-          <mat-icon>{{ icon }}</mat-icon>
-  </button>
-  `,
-	props: args
-});
-export const MiniFAB: StoryFn<MatButton> = (args) => ({
-	template: `
-  <button mat-mini-fab
-          [color]="color"
-          [disabled]="disabled"
-          (click)="onClick($event)"
-          [disableRipple]="disableRipple">
-          <mat-icon>{{ icon }}</mat-icon>
-  </button>
-  `,
-	props: args
-});
-
-export const ExtendedFAB: StoryFn<MatButton> = (args) => ({
-	template: `
-  <button mat-fab extended
-          [color]="color"
-          [disabled]="disabled"
-          (click)="onClick($event)"
-          [disableRipple]="disableRipple">
-          <mat-icon>{{ icon }}</mat-icon>
-          {{ label }}
-  </button>
-  `,
-	props: args
-});
+export const Icon: StoryObj<IconButtonComponent & any> = {
+	args: {type: 'icon', label: 'home'}
+};

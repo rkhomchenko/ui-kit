@@ -1,0 +1,14 @@
+<a
+	matRipple
+	mat-list-item
+	routerLinkActive
+	[routerLink]="ref"
+	#rla="routerLinkActive"
+	[activated]="rla.isActive"
+	[title]="label.textContent">
+	<mat-icon [svgIcon]="icon" matListItemIcon></mat-icon>
+
+	<div class="label" matListItemTitle #label>
+		<ng-content></ng-content>
+	</div>
+</a>

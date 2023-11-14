@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+@use '../utils' as utils;
+
+@include utils.extendTheme() {
+	mat-sidenav-container {
+		--mat-sidenav-container-divider-color: var(--q9-accent-200);
+		--mat-sidenav-container-background-color: var(--q9-surface-100);
+	}
+
+	[mat-list-item],
+	mat-list-item {
+		--mdc-list-list-item-label-text-size: 14px;
+		--mdc-list-list-item-label-text-weight: 500;
+		--mdc-list-list-item-focus-state-layer-color: transparent;
+		--mdc-list-list-item-label-text-color: var(--q9-accent-500);
+		--mdc-list-list-item-leading-icon-color: var(--q9-accent-500);
+		--mdc-list-list-item-focus-label-text-color: var(--q9-primary-300);
+		--mdc-list-list-item-hover-label-text-color: var(--q9-primary-300);
+		--mdc-list-list-item-hover-leading-icon-color: var(--q9-primary-300);
+
+		&:hover {
+			--mdc-list-list-item-container-color: var(--q9-primary-100);
+		}
+
+		&.mdc-list-item--activated {
+			background-color: var(--q9-primary-100);
+		}
+
+		&.mdc-list-item--with-leading-icon {
+			.mdc-list-item__start {
+				margin: 0;
+				padding: 16px;
+			}
+		}
+	}
+}

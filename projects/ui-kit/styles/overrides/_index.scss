@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+@use '../utils' as utils;
+
+@include utils.extendTheme() {
+	--mdc-shape-small: 6px;
+}
+
+@import 'form-field';
+@import 'button';
+@import 'select';
+@import 'icon';
+@import 'sidenav';

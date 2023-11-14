@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+@use '../utils' as utils;
+
+@include utils.extendTheme() {
+	.mat-icon svg {
+		fill: none;
+		stroke-width: 2px;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+}

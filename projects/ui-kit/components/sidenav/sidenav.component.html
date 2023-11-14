@@ -1,0 +1,19 @@
+<mat-sidenav-container>
+	<mat-sidenav mode="side" [opened]="true">
+		<mat-list>
+			<ng-content select="q9-navigation-link"></ng-content>
+		</mat-list>
+
+		<button
+			mat-icon-button
+			(click)="opened = !opened"
+			title="Toggle navigation"
+			class="toggle">
+			<mat-icon [svgIcon]="opened ? 'arrow_left' : 'arrow_right'"></mat-icon>
+		</button>
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<ng-content></ng-content>
+	</mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,42 @@
+@use '@angular/material' as mat;
+@use 'dark' as q9-dark;
+@use 'light' as q9-light;
+@use 'utils' as utils;
+
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons&family=Roboto:wght@300;400;500;600');
+
+body {
+	font-family: Roboto, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+
+@include utils.extendTheme('light') {
+	@include mat.all-component-themes(q9-light.$theme);
+
+	@include utils.generateTokens(
+		(
+			primary: q9-light.$primary,
+			accent: q9-light.$accent,
+			warn: q9-light.$warn,
+			surface: q9-light.$extra
+		)
+	);
+}
+
+@include utils.extendTheme('dark') {
+	@include mat.all-component-themes(q9-dark.$theme);
+
+	@include utils.generateTokens(
+		(
+			primary: q9-dark.$primary,
+			accent: q9-dark.$accent,
+			warn: q9-dark.$warn,
+			surface: q9-dark.$extra
+		)
+	);
+}
+
+@import 'overrides';

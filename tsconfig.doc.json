@@ -1,9 +1,4 @@
 {
-  "include": [
-    "projects/ui-kit/src/**/*.ts"
-  ],
-  "exclude": [
-    "projects/ui-kit/src/**/*.spec.ts",
-    "projects/ui-kit/src/**/*.stories.ts",
-  ]
+	"include": ["projects/ui-kit/**/*.ts"],
+	"exclude": ["projects/ui-kit/**/*.spec.ts", "projects/ui-kit/**/*.stories.ts"]
 }
