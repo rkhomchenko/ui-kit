@@ -8,8 +8,9 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {ThemePalette} from '@angular/material/core';
-import {OptionComponent} from '@q9elements/ui-kit/components';
-import {DefaultErrorStateMatcher} from '@q9elements/ui-kit/validators/error-state-matcher';
+import {DefaultErrorStateMatcher} from '@q9elements/ui-kit/validators';
+
+import {OptionComponent} from './components/option/option.component';
 
 @Component({
 	selector: 'q9-select',

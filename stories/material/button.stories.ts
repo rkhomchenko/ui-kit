@@ -9,8 +9,9 @@ import {
 	argsToTemplate,
 	Meta,
 	moduleMetadata,
-	StoryObj
+	StoryFn
 } from '@storybook/angular';
+import {omit} from 'lodash';
 
 import {BaseControlArgs, BaseControlArgTypes} from '../utils';
 
@@ -28,51 +29,53 @@ export default {
 			]
 		})
 	],
-	parameters: {
-		controls: {
-			// type: {
-			// 	table: {
-			// 		disabled: true
-			// 	}
-			// }
-		}
-	},
-	render: args => {
-		const {type, label, ...props} = args;
-
-		return {
-			props: {...props, label},
-			template: `<q9-${type}-btn ${argsToTemplate(
-				props
-			)}>{{label}}</q9-${type}-btn>`
-		};
-	},
 	args: {
 		...BaseControlArgs,
 		isLoading: false
 	},
 	argTypes: {
-		type: {
-			table: {
-				disable: true
-			}
-		},
+		onClick: {action: 'clicked'},
 		...BaseControlArgTypes
 	}
 } as Meta;
 
-export const Primary: StoryObj<SecondaryButtonComponent & any> = {
-	args: {type: 'primary'}
-};
+const btnArgsToTemplate = (args: any) => argsToTemplate(omit(args, ['label']));
 
-export const Secondary: StoryObj<SecondaryButtonComponent & any> = {
-	args: {type: 'secondary'}
-};
+export const Primary: StoryFn<PrimaryButtonComponent> = args => ({
+	props: args,
+	template: `<q9-primary-btn 
+								(click)="onClick($event)" 
+								${btnArgsToTemplate(args)}>
+								{{label}}
+						 </q9-primary-btn>`
+});
 
-export const Link: StoryObj<LinkButtonComponent & any> = {
-	args: {type: 'link'}
-};
+export const Secondary: StoryFn<SecondaryButtonComponent> = args => ({
+	props: args,
+	template: `<q9-secondary-btn
+								(click)="onClick($event)"
+								${btnArgsToTemplate(args)}>
+								{{label}}
+						 </q9-secondary-btn>`
+});
 
-export const Icon: StoryObj<IconButtonComponent & any> = {
-	args: {type: 'icon', label: 'home'}
+export const Link: StoryFn<LinkButtonComponent> = args => ({
+	props: args,
+	template: `<q9-link-btn
+								(click)="onClick($event)" 
+								${btnArgsToTemplate(args)}>
+								{{label}}
+						 </q9-link-btn>`
+});
+
+export const Icon: StoryFn<IconButtonComponent | any> = args => ({
+	props: args,
+	template: `<q9-icon-btn
+								(click)="onClick($event)"
+								${btnArgsToTemplate(args)}>
+						 </q9-icon-btn>`
+});
+
+Icon.args = {
+	icon: 'releases'
 };

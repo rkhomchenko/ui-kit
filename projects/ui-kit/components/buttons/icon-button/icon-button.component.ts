@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -20,4 +20,6 @@ import {BaseButtonComponent} from '../base-button.component';
 	templateUrl: './icon-button.component.html',
 	styleUrls: ['./icon-button.component.scss']
 })
-export class IconButtonComponent extends BaseButtonComponent {}
+export class IconButtonComponent extends BaseButtonComponent {
+	@Input() icon: string;
+}

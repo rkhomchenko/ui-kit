@@ -13,7 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {Q9TransformPipe} from '@q9elements/ui-kit/common';
-import {DefaultErrorStateMatcher} from '@q9elements/ui-kit/validators/error-state-matcher';
+import {DefaultErrorStateMatcher} from '@q9elements/ui-kit/validators';
 
 @Component({
 	selector: 'q9-text-field',

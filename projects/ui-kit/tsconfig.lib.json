@@ -6,7 +6,8 @@
 		"declaration": true,
 		"declarationMap": true,
 		"inlineSources": true,
-		"noImplicitAny": true
+		"noImplicitAny": true,
+		"skipLibCheck": true
 	},
 	"exclude": ["**/*.spec.ts", "**/*.stories.ts"]
 }

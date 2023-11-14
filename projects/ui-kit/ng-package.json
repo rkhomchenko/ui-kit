@@ -9,6 +9,14 @@
 			"glob": "**/*",
 			"input": "./styles",
 			"output": "./styles"
+		},
+		{
+			"glob": "**/*",
+			"input": "./assets",
+			"output": "./assets"
 		}
+	],
+	"allowedNonPeerDependencies": [
+		"@ngx-translate/core"
 	]
 }
