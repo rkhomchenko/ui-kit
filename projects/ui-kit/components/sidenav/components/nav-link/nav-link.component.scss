@@ -1,3 +1,7 @@
 [mat-list-item] {
 	max-width: 220px;
+
+	&:hover {
+		cursor: pointer;
+	}
 }

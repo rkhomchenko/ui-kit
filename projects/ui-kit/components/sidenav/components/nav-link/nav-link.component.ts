@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Optional} from '@angular/core';
+import {SidenavComponent} from '@q9elements/ui-kit/components';
 
 @Component({
 	selector: 'q9-navigation-link',
@@ -8,4 +9,6 @@ import {Component, Input} from '@angular/core';
 export class NavLinkComponent {
 	@Input() ref: string;
 	@Input() icon: string;
+
+	constructor(@Optional() public sidenav: SidenavComponent) {}
 }

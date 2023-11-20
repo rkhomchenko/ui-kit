@@ -8,13 +8,7 @@ import {
 import {MatIconModule} from '@angular/material/icon';
 import {SelectComponent, SelectModule} from '@q9elements/ui-kit/components';
 import {Q9Validators} from '@q9elements/ui-kit/validators';
-import {
-	argsToTemplate,
-	Meta,
-	moduleMetadata,
-	StoryFn,
-	StoryObj
-} from '@storybook/angular';
+import {Meta, moduleMetadata, StoryFn, StoryObj} from '@storybook/angular';
 
 import {BaseControlArgs, BaseControlArgTypes} from '../utils';
 
@@ -52,14 +46,17 @@ export default {
 	render: ({value, onChange, ...args}) => ({
 		props: {value, onChange, ...args},
 		template: `
-				<q9-select ${argsToTemplate(args)}
-											 [ngModel]="value"
-											 (ngModelChange)="onChange($event)">
-					<q9-option *ngFor="let value of values" [value]="value">
-						Option {{ value }}
-					</q9-option>
-				</q9-select>
-		`
+					<q9-select [color]="color"
+										 [label]="label"
+										 [hint]="hint"
+										 [multiple]="multiple"
+										 [value]="value"
+										 (selectionChange)="onChange($event)">
+						<q9-option *ngFor="let value of values" [value]="value">
+							Option {{ value }}
+						</q9-option>
+					</q9-select>
+			`
 	}),
 	args: {
 		...BaseControlArgs,
@@ -112,13 +109,14 @@ export const SelectFormControl: StoryFn<any> = args => {
 	formControl.valueChanges.subscribe(onChange);
 
 	return {
-		props: {
-			...props,
-			formControl
-		},
+		props: {...props, formControl},
 		template: `
-			<q9-select ${argsToTemplate(args)}
-										[formControl]="formControl">
+			<q9-select [label]="label"
+								 [color]="color"
+								 [disabled]="disabled"
+								 [multiple]="multiple"
+								 [required]="required"
+								 [formControl]="formControl">
 				<q9-option *ngFor="let value of values" [value]="value">
 					Option {{ value }}
 				</q9-option>

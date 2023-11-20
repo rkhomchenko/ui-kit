@@ -5,9 +5,9 @@ import {withThemeByClassName} from '@storybook/addon-themes';
 import {applicationConfig, moduleMetadata, Preview} from '@storybook/angular';
 
 import docJson from '../documentation.json';
-
 import '../stories/styles/global.scss?ngStorybook';
 import '../projects/ui-kit/styles/index.scss?ngStorybook';
+import {provideServiceMocks} from '../stories/mocks';
 
 setCompodocJson(docJson);
 
@@ -29,10 +29,11 @@ export default {
 				}),
 				{}
 			),
-			defaultTheme: themeClasses[0]
+			defaultTheme: themeClasses[0],
+			parentSelector: 'body'
 		}),
 		applicationConfig({
-			providers: [importProvidersFrom(CoreModule)]
+			providers: [importProvidersFrom(CoreModule), provideServiceMocks()]
 		}),
 		moduleMetadata({
 			imports: [CoreModule]

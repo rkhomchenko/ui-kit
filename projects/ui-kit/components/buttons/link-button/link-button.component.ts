@@ -7,7 +7,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {BaseButtonComponent} from '../base-button.component';
 
 @Component({
-	selector: 'q9-link-btn',
+	selector: 'q9-link-button',
 	standalone: true,
 	imports: [
 		CommonModule,
@@ -15,7 +15,17 @@ import {BaseButtonComponent} from '../base-button.component';
 		MatProgressSpinnerModule,
 		MatInputModule
 	],
-	templateUrl: './link-button.component.html',
-	styleUrls: ['./link-button.component.scss']
+	template: `
+		<button mat-button [color]="color" [disabled]="disabled">
+			<ng-container *ngIf="!isLoading; else loader">
+				<ng-content></ng-content>
+			</ng-container>
+
+			<ng-template #loader>
+				<mat-spinner matSuffix *ngIf="isLoading"></mat-spinner>
+			</ng-template>
+		</button>
+	`,
+	styleUrls: ['../base-button.component.scss']
 })
 export class LinkButtonComponent extends BaseButtonComponent {}

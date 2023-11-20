@@ -12,6 +12,10 @@ import {
 	MatProgressSpinnerDefaultOptions
 } from '@angular/material/progress-spinner';
 import {MAT_SELECT_CONFIG, MatSelectConfig} from '@angular/material/select';
+import {
+	MAT_TOOLTIP_DEFAULT_OPTIONS,
+	MatTooltipDefaultOptions
+} from '@angular/material/tooltip';
 
 const MAT_FORM_FIELD_OPTIONS_PROVIDER: Provider = {
 	provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -49,13 +53,23 @@ const MAT_SELECT_OPTIONS_PROVIDER: Provider = {
 	} as MatSelectConfig
 };
 
-export default function provideMaterialSettings(): Array<
+const MAT_TOOLTIP_OPTIONS_PROVIDER: Provider = {
+	provide: MAT_TOOLTIP_DEFAULT_OPTIONS,
+	useValue: {
+		showDelay: 400,
+		hideDelay: 400,
+		position: 'after'
+	} as MatTooltipDefaultOptions
+};
+
+export function provideMaterialSettings(): Array<
 	Provider | EnvironmentProviders
 > {
 	return [
 		MAT_FORM_FIELD_OPTIONS_PROVIDER,
 		MAT_PROGRESS_SPINNER_OPTIONS_PROVIDER,
 		MAT_BUTTON_TOGGLE_OPTIONS_PROVIDER,
-		MAT_SELECT_OPTIONS_PROVIDER
+		MAT_SELECT_OPTIONS_PROVIDER,
+		MAT_TOOLTIP_OPTIONS_PROVIDER
 	];
 }

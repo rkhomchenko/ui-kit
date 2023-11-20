@@ -8,7 +8,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {BaseButtonComponent} from '../base-button.component';
 
 @Component({
-	selector: 'q9-icon-btn',
+	selector: 'q9-icon-button',
 	standalone: true,
 	imports: [
 		CommonModule,
@@ -17,8 +17,18 @@ import {BaseButtonComponent} from '../base-button.component';
 		MatFormFieldModule,
 		MatIconModule
 	],
-	templateUrl: './icon-button.component.html',
-	styleUrls: ['./icon-button.component.scss']
+	template: `
+		<button mat-icon-button [color]="color" [disabled]="disabled">
+			<ng-container *ngIf="!isLoading; else loader">
+				<mat-icon [svgIcon]="icon"></mat-icon>
+			</ng-container>
+
+			<ng-template #loader>
+				<mat-spinner matSuffix *ngIf="isLoading"></mat-spinner>
+			</ng-template>
+		</button>
+	`,
+	styleUrls: ['../base-button.component.scss']
 })
 export class IconButtonComponent extends BaseButtonComponent {
 	@Input() icon: string;

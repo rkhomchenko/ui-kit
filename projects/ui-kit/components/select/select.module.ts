@@ -17,6 +17,6 @@ import {SelectComponent} from './select.component';
 		Q9TransformPipe
 	],
 	declarations: [SelectComponent, OptionComponent],
-	exports: [SelectComponent, OptionComponent]
+	exports: [SelectComponent, OptionComponent, FormsModule]
 })
 export class SelectModule {}

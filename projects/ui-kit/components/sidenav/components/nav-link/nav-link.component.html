@@ -5,7 +5,8 @@
 	[routerLink]="ref"
 	#rla="routerLinkActive"
 	[activated]="rla.isActive"
-	[title]="label.textContent">
+	[matTooltip]="label.textContent"
+	[matTooltipDisabled]="!!sidenav?.opened">
 	<mat-icon [svgIcon]="icon" matListItemIcon></mat-icon>
 
 	<div class="label" matListItemTitle #label>

@@ -1,13 +1,16 @@
 import {
 	Component,
 	ContentChildren,
+	EventEmitter,
 	Input,
 	Optional,
+	Output,
 	QueryList,
 	Self
 } from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {ThemePalette} from '@angular/material/core';
+import {MatSelectChange} from '@angular/material/select';
 import {DefaultErrorStateMatcher} from '@q9elements/ui-kit/validators';
 
 import {OptionComponent} from './components/option/option.component';
@@ -25,6 +28,9 @@ export class SelectComponent
 	@Input() public label: string;
 	@Input() public hint: string;
 	@Input() public multiple: boolean;
+	@Input() public value: any;
+
+	@Output() selectionChange = new EventEmitter<MatSelectChange>();
 
 	@ContentChildren(OptionComponent) options: QueryList<OptionComponent>;
 
@@ -36,16 +42,18 @@ export class SelectComponent
 		}
 	}
 
-	_value: string;
 	_isDisabled: boolean;
-	_onChange: (event: any) => void;
+	_onChange = (event: MatSelectChange) => this.selectionChange.emit(event);
 
 	writeValue(value: string): void {
-		this._value = value;
+		this.value = value;
 	}
 
-	registerOnChange(onChange: () => void): void {
-		this._onChange = onChange;
+	registerOnChange(onChange: (value: any) => void): void {
+		this._onChange = (event: MatSelectChange) => {
+			this.selectionChange.emit(event);
+			onChange(event.value);
+		};
 	}
 
 	registerOnTouched(): void {}

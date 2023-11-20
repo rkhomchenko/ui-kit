@@ -18,7 +18,20 @@ const ICONS_RESOLVER_PROVIDER: Provider = {
 	deps: [MatIconRegistry, DomSanitizer]
 };
 
-export default function provideAppInitializers(): Array<
+// const INIT_THEME_PROVIDER: Provider = {
+// 	provide: APP_INITIALIZER,
+// 	multi: true,
+// 	useFactory: (themeService: ThemeService) => {
+// 		return () => {
+// 			const theme = themeService.getCurrentTheme();
+//
+// 			themeService.applyTheme(theme);
+// 		};
+// 	},
+// 	deps: [ThemeService]
+// };
+
+export function provideAppInitializers(): Array<
 	Provider | EnvironmentProviders
 > {
 	return [ICONS_RESOLVER_PROVIDER];

@@ -43,37 +43,37 @@ const btnArgsToTemplate = (args: any) => argsToTemplate(omit(args, ['label']));
 
 export const Primary: StoryFn<PrimaryButtonComponent> = args => ({
 	props: args,
-	template: `<q9-primary-btn 
+	template: `<q9-primary-button 
 								(click)="onClick($event)" 
 								${btnArgsToTemplate(args)}>
 								{{label}}
-						 </q9-primary-btn>`
+						 </q9-primary-button>`
 });
 
 export const Secondary: StoryFn<SecondaryButtonComponent> = args => ({
 	props: args,
-	template: `<q9-secondary-btn
+	template: `<q9-secondary-button
 								(click)="onClick($event)"
 								${btnArgsToTemplate(args)}>
 								{{label}}
-						 </q9-secondary-btn>`
+						 </q9-secondary-button>`
 });
 
 export const Link: StoryFn<LinkButtonComponent> = args => ({
 	props: args,
-	template: `<q9-link-btn
+	template: `<q9-link-button
 								(click)="onClick($event)" 
 								${btnArgsToTemplate(args)}>
 								{{label}}
-						 </q9-link-btn>`
+						 </q9-link-button>`
 });
 
 export const Icon: StoryFn<IconButtonComponent | any> = args => ({
 	props: args,
-	template: `<q9-icon-btn
+	template: `<q9-icon-button
 								(click)="onClick($event)"
 								${btnArgsToTemplate(args)}>
-						 </q9-icon-btn>`
+						 </q9-icon-button>`
 });
 
 Icon.args = {

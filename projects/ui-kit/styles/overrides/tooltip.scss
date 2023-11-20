@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+@use '../utils' as utils;
+
+@include utils.extendTheme() {
+	.mdc-tooltip__surface {
+		--mdc-plain-tooltip-container-shape: 6px;
+		--mdc-plain-tooltip-supporting-text-size: 14px;
+		--mdc-plain-tooltip-container-color: var(--q9-surface-dark-contrast);
+
+		padding: 8px 12px;
+	}
+}

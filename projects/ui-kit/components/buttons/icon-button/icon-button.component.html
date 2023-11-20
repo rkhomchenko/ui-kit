@@ -1,9 +1,0 @@
-<button mat-icon-button [color]="color" [disabled]="disabled">
-	<ng-container *ngIf="!isLoading; else loader">
-		<mat-icon [svgIcon]="icon"></mat-icon>
-	</ng-container>
-
-	<ng-template #loader>
-		<mat-spinner matSuffix *ngIf="isLoading"></mat-spinner>
-	</ng-template>
-</button>

@@ -80,7 +80,7 @@ export default {
 	]
 } as Meta;
 
-export const Default: StoryObj<TextFieldComponent> = {};
+export const Basic: StoryObj<TextFieldComponent> = {};
 
 export const InputWithIcon: StoryObj<TextFieldComponent> = {
 	name: 'With icon',

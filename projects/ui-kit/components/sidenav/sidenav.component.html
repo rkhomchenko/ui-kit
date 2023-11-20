@@ -6,10 +6,10 @@
 
 		<button
 			mat-icon-button
-			(click)="opened = !opened"
-			title="Toggle navigation"
+			[matTooltip]="opened | transform: getTooltipText | translate"
+			(click)="toggleSidenav()"
 			class="toggle">
-			<mat-icon [svgIcon]="opened ? 'arrow_left' : 'arrow_right'"></mat-icon>
+			<mat-icon [svgIcon]="opened | transform: getIconName"></mat-icon>
 		</button>
 	</mat-sidenav>
 

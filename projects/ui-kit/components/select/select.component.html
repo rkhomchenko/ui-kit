@@ -3,10 +3,10 @@
 
 	<mat-select
 		[multiple]="multiple"
-		[ngModel]="_value"
+		[value]="value"
 		[disabled]="_isDisabled"
 		[errorStateMatcher]="this"
-		(ngModelChange)="_onChange($event)">
+		(selectionChange)="_onChange($event)">
 		<mat-option *ngFor="let option of options" [value]="option.value">
 			<ng-container [ngTemplateOutlet]="option.content"></ng-container>
 		</mat-option>
