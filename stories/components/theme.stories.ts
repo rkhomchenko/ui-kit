@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {Injector} from '@angular/core';
-import {Theme, ThemeService} from '@q9elements/ui-kit/common';
-import {SelectModule} from '@q9elements/ui-kit/components';
+import {Theme, ThemeService} from '@rkhomchenko/ui-kit/common';
+import {SelectModule} from '@rkhomchenko/ui-kit/components';
 import {action} from '@storybook/addon-actions';
 import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 

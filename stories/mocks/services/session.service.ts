@@ -1,5 +1,5 @@
 import {computed, signal} from '@angular/core';
-import {User} from '@q9elements/ui-kit/common';
+import {User} from '@rkhomchenko/ui-kit/common';
 import {get} from 'lodash';
 
 const USER_MOCK: Partial<User> = {

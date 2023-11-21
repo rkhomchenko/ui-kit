@@ -6,8 +6,8 @@ import {
 	ValidatorFn
 } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
-import {SelectComponent, SelectModule} from '@q9elements/ui-kit/components';
-import {Q9Validators} from '@q9elements/ui-kit/validators';
+import {SelectComponent, SelectModule} from '@rkhomchenko/ui-kit/components';
+import {Q9Validators} from '@rkhomchenko/ui-kit/validators';
 import {Meta, moduleMetadata, StoryFn, StoryObj} from '@storybook/angular';
 
 import {BaseControlArgs, BaseControlArgTypes} from '../utils';

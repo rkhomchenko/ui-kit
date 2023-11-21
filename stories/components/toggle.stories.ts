@@ -1,7 +1,7 @@
 import {
 	ButtonToggleGroupModule,
 	IconToggleGroupModule
-} from '@q9elements/ui-kit/components';
+} from '@rkhomchenko/ui-kit/components';
 import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 
 export default {

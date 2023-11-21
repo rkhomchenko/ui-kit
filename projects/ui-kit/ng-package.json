@@ -17,6 +17,7 @@
 		}
 	],
 	"allowedNonPeerDependencies": [
-		"@ngx-translate/core"
+		"@ngx-translate/core",
+		"ngx-cookie-service"
 	]
 }

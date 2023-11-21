@@ -23,8 +23,8 @@
 		"useDefineForClassFields": false,
 		"paths": {
 			"ui-kit": ["dist/ui-kit"],
-			"@q9elements/ui-kit/*": ["projects/ui-kit/*"],
-			"@q9elements/ui-kit": ["projects/ui-kit"]
+			"@rkhomchenko/ui-kit/*": ["projects/ui-kit/*"],
+			"@rkhomchenko/ui-kit": ["projects/ui-kit"]
 		},
 		"lib": ["es6", "ES2022", "dom"]
 	},

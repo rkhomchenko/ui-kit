@@ -12,8 +12,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {Q9TransformPipe} from '@q9elements/ui-kit/common';
-import {DefaultErrorStateMatcher} from '@q9elements/ui-kit/validators';
+import {Q9TransformPipe} from '@rkhomchenko/ui-kit/common';
+import {DefaultErrorStateMatcher} from '@rkhomchenko/ui-kit/validators';
 
 @Component({
 	selector: 'q9-text-field',

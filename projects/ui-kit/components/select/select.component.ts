@@ -11,7 +11,7 @@ import {
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {ThemePalette} from '@angular/material/core';
 import {MatSelectChange} from '@angular/material/select';
-import {DefaultErrorStateMatcher} from '@q9elements/ui-kit/validators';
+import {DefaultErrorStateMatcher} from '@rkhomchenko/ui-kit/validators';
 
 import {OptionComponent} from './components/option/option.component';
 

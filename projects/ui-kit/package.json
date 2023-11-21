@@ -1,5 +1,5 @@
 {
-  "name": "@q9elements/ui-kit",
+  "name": "@rkhomchenko/ui-kit",
   "version": "0.0.0",
   "peerDependencies": {
     "@angular/common": "^16.2.0",

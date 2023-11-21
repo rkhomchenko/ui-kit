@@ -1,5 +1,5 @@
 import {importProvidersFrom} from '@angular/core';
-import {CoreModule} from '@q9elements/ui-kit/common';
+import {CoreModule} from '@rkhomchenko/ui-kit/common';
 import {setCompodocJson} from '@storybook/addon-docs/angular';
 import {withThemeByClassName} from '@storybook/addon-themes';
 import {applicationConfig, moduleMetadata, Preview} from '@storybook/angular';

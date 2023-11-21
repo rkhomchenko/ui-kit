@@ -5,8 +5,8 @@ import {
 	ReactiveFormsModule,
 	ValidatorFn
 } from '@angular/forms';
-import {TextFieldComponent} from '@q9elements/ui-kit/components';
-import {Q9Validators} from '@q9elements/ui-kit/validators';
+import {TextFieldComponent} from '@rkhomchenko/ui-kit/components';
+import {Q9Validators} from '@rkhomchenko/ui-kit/validators';
 import {
 	argsToTemplate,
 	Meta,

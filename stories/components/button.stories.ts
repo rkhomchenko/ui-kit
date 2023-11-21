@@ -3,8 +3,8 @@ import {
 	LinkButtonComponent,
 	PrimaryButtonComponent,
 	SecondaryButtonComponent
-} from '@q9elements/ui-kit/components';
-import {BaseButtonComponent} from '@q9elements/ui-kit/components/buttons/base-button.component';
+} from '@rkhomchenko/ui-kit/components';
+import {BaseButtonComponent} from '@rkhomchenko/ui-kit/components/buttons/base-button.component';
 import {
 	argsToTemplate,
 	Meta,

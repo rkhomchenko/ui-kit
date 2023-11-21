@@ -8,7 +8,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
-import {Q9TransformPipe} from '@q9elements/ui-kit/common';
+import {Q9TransformPipe} from '@rkhomchenko/ui-kit/common';
 
 import {NavLinkComponent} from './components/nav-link/nav-link.component';
 import {SidenavComponent} from './sidenav.component';

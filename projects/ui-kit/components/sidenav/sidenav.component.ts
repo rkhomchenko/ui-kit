@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SessionService, UserSettingsService} from '@q9elements/ui-kit/common';
+import {SessionService, UserSettingsService} from '@rkhomchenko/ui-kit/common';
 
 @Component({
 	selector: 'q9-navigation-sidebar',

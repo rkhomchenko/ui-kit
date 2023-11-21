@@ -3,8 +3,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateModule} from '@ngx-translate/core';
-import {NavLinkComponent, SidenavModule} from '@q9elements/ui-kit/components';
-import {SidenavComponent} from '@q9elements/ui-kit/components/sidenav/sidenav.component';
+import {NavLinkComponent, SidenavModule} from '@rkhomchenko/ui-kit/components';
+import {SidenavComponent} from '@rkhomchenko/ui-kit/components/sidenav/sidenav.component';
 import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 
 import {RouterStubComponent} from '../utils/stubs';

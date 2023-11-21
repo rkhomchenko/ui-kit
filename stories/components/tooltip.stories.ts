@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {MatTooltip, MatTooltipModule} from '@angular/material/tooltip';
-import {PrimaryButtonComponent} from '@q9elements/ui-kit/components';
+import {PrimaryButtonComponent} from '@rkhomchenko/ui-kit/components';
 import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 
 export default {
