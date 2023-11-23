@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build ui-kit",
-    "publish": "npm run build && npm publish dist/ui-kit",
+    "publish": "cd dist/ui-kit/ && npm publish",
+    "release": "NODE_ENV=production npx semantic-release",
+    "release:local": "NODE_ENV=local npx semantic-release",
     "prepare": "husky install && npm run translate",
     "lint": "eslint --fix",
     "prettier": "prettier --write",
@@ -107,6 +109,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Q9Elements/ui-kit.git"
+    "url": "https://github.com/Q9Elements/ui-kit.git"
   }
 }

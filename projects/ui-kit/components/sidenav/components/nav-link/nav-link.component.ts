@@ -1,5 +1,6 @@
 import {Component, Input, Optional} from '@angular/core';
-import {SidenavComponent} from '@q9elements/ui-kit/components';
+
+import {SidenavComponent} from '../../sidenav.component';
 
 @Component({
 	selector: 'q9-navigation-link',
