@@ -3,6 +3,8 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 const isLocalDeploy = LOCAL === '1';
 
+console.log(process.env);
+
 const commitPlugin = '@semantic-release/commit-analyzer';
 const releaseNotesPlugin = '@semantic-release/release-notes-generator';
 const changelogPlugin = '@semantic-release/changelog';
