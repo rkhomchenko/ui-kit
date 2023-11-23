@@ -17,7 +17,7 @@ const execPlugin = [
     '@semantic-release/exec',
     {
         'prepareCmd': 'npm run build',
-        'publishCmd': 'npm run publish:package'
+        'publishCmd': 'npm run publish'
     }
 ];
 const gitPlugin = '@semantic-release/git';
