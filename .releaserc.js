@@ -1,7 +1,7 @@
 const LOCAL = process.env.LOCAL || 'false';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
-const isLocalDeploy = LOCAL === 'true';
+const isLocalDeploy = LOCAL === '1';
 
 const commitPlugin = '@semantic-release/commit-analyzer';
 const releaseNotesPlugin = '@semantic-release/release-notes-generator';
@@ -17,26 +17,11 @@ const execPlugin = [
     '@semantic-release/exec',
     {
         'prepareCmd': 'npm run build',
-        'publishCmd': 'npm run publish'
+        'publishCmd': 'npm run publish:package'
     }
 ];
-const gitPlugin = [
-    '@semantic-release/git',
-    {
-        'assets': [
-            'projects/ui-kit/package.json',
-            'CHANGELOG.md'
-        ]
-    }
-];
-const githubPlugin = [
-    '@semantic-release/github',
-    {
-        'assets': [
-            'dist/ui-kit/**'
-        ]
-    }
-];
+const gitPlugin = '@semantic-release/git';
+const githubPlugin = '@semantic-release/github';
 
 const ci = !isLocalDeploy;
 const plugins = isLocalDeploy
@@ -48,6 +33,11 @@ const plugins = isLocalDeploy
 
 if (isLocalDeploy && !GITHUB_TOKEN) {
     throw new Error('GITHUB_TOKEN is required for local deployment');
+}
+
+if (isLocalDeploy) {
+    process.env.CI = '0';
+    process.env.HUSKY = '0';
 }
 
 module.exports = {

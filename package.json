@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build ui-kit",
-    "publish": "npm publish dist/ui-kit",
+    "publish:package": "npm publish dist/ui-kit/",
     "release:prod": "npx semantic-release",
-    "release:local": "LOCAL=true npx semantic-release",
+    "release:local": "LOCAL=1 npx semantic-release",
     "prepare": "husky install && npm run translate",
     "lint": "eslint --fix",
     "prettier": "prettier --write",
@@ -110,5 +110,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/rkhomchenko/ui-kit.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
