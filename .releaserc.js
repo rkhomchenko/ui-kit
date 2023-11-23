@@ -1,6 +1,8 @@
 const NODE_ENV = process.env.NODE_ENV;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
+console.log(process.env);
+
 const isLocalDeploy = NODE_ENV !== 'production';
 
 const commitPlugin = '@semantic-release/commit-analyzer';
