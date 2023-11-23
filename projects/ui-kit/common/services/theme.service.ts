@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {SessionService, UserSettingsService} from '@q9elements/ui-kit/common';
 
+import {SessionService} from './session.service';
+import {UserSettingsService} from './user-settings.service';
 import {Theme, THEMES} from '../models/user-settings';
 
 @Injectable({providedIn: 'root'})
